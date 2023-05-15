@@ -27156,11 +27156,15 @@ var _movieView = require("../movie-view/movie-view");
 var _s = $RefreshSig$();
 const MainView = ()=>{
     _s();
+    // State to store the movie data retrieved from the API
     const [movies, setMovies] = (0, _react.useState)([]);
+    // State to store the selected movie for displaying its details
     const [selectedMovie, setSelectedMovie] = (0, _react.useState)(null);
+    // Fetch movie data from the API when the component mounts
     (0, _react.useEffect)(()=>{
         fetch("https://road-movie-cinephiles.herokuapp.com/movies").then((response)=>response.json()).then((data)=>{
             console.log(data);
+            // Transform the fetched data to match the required structure
             const moviesFromApi = data.map((movie)=>{
                 return {
                     _id: movie._id,
@@ -27176,26 +27180,30 @@ const MainView = ()=>{
                     Featured: movie.Featured
                 };
             });
+            // Set the transformed movie data in the state
             setMovies(moviesFromApi);
         }).catch((error)=>{
             console.log("Error fetching movies:", error);
         });
     }, []);
+    // If a movie is selected, render the MovieView component
     if (selectedMovie) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieView.MovieView), {
         movie: selectedMovie,
         onBackClick: ()=>setSelectedMovie(null)
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 39,
+        lineNumber: 47,
         columnNumber: 7
     }, undefined);
+    // If the movie list is empty, display a message
     if (movies.length === 0) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: "The list is empty!"
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 47,
+        lineNumber: 56,
         columnNumber: 12
     }, undefined);
+    // Render the movie cards for each movie in the list
     return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
         children: movies.map((movie)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _movieCard.MovieCard), {
                 movie: movie,
@@ -27204,12 +27212,12 @@ const MainView = ()=>{
                 }
             }, movie._id, false, {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 53,
+                lineNumber: 63,
                 columnNumber: 9
             }, undefined))
     }, void 0, false, {
         fileName: "src/components/main-view/main-view.jsx",
-        lineNumber: 51,
+        lineNumber: 61,
         columnNumber: 5
     }, undefined);
 };
