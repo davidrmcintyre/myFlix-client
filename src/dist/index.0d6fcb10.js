@@ -28208,7 +28208,7 @@ const MovieView = ({ movie , onBackClick  })=>{
                 children: /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("img", {
                     src: movie.ImagePath,
                     alt: movie.Title,
-                    className: "movie-image"
+                    class: "movie-image"
                 }, void 0, false, {
                     fileName: "src/components/movie-view/movie-view.jsx",
                     lineNumber: 5,
@@ -28278,7 +28278,8 @@ const MovieView = ({ movie , onBackClick  })=>{
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 17,
                         columnNumber: 11
-                    }, undefined)
+                    }, undefined),
+                    " "
                 ]
             }, void 0, true, {
                 fileName: "src/components/movie-view/movie-view.jsx",
@@ -28318,8 +28319,11 @@ const MovieView = ({ movie , onBackClick  })=>{
                     }, undefined),
                     movie.Genres && movie.Genres.length > 0 ? movie.Genres.map((genre)=>/*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("span", {
                             className: "genre",
-                            children: genre
-                        }, genre, false, {
+                            children: [
+                                " ",
+                                genre
+                            ]
+                        }, genre, true, {
                             fileName: "src/components/movie-view/movie-view.jsx",
                             lineNumber: 27,
                             columnNumber: 15
@@ -28329,7 +28333,7 @@ const MovieView = ({ movie , onBackClick  })=>{
                         fileName: "src/components/movie-view/movie-view.jsx",
                         lineNumber: 32,
                         columnNumber: 13
-                    }, undefined)
+                    }, undefined) // Displayed when genres array is empty
                 ]
             }, void 0, true, {
                 fileName: "src/components/movie-view/movie-view.jsx",
@@ -28343,7 +28347,8 @@ const MovieView = ({ movie , onBackClick  })=>{
                 fileName: "src/components/movie-view/movie-view.jsx",
                 lineNumber: 35,
                 columnNumber: 9
-            }, undefined)
+            }, undefined),
+            " "
         ]
     }, void 0, true, {
         fileName: "src/components/movie-view/movie-view.jsx",
