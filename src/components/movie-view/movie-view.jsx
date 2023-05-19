@@ -2,7 +2,7 @@ export const MovieView = ({ movie, onBackClick }) => {
     return (
       <div>
         <div>
-          <img src={movie.ImagePath} alt={movie.Title} class="movie-image" />
+          <img src={movie.ImagePath} alt={movie.Title} class='movie-image' />
         </div>
         <div>
           <span>Title: </span>
@@ -24,7 +24,7 @@ export const MovieView = ({ movie, onBackClick }) => {
           <span>Genres: </span>
           {movie.Genres && movie.Genres.length > 0 ? ( // Checking if genres array is not empty
             movie.Genres.map((genre) => (
-              <span key={genre} className="genre"> {/* Assigning a unique key to each genre */}
+              <span key={genre} className='genre'> {/* Assigning a unique key to each genre */}
                 {genre}
               </span>
             ))
