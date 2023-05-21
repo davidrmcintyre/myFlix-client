@@ -16,7 +16,7 @@ export const SignupView = () => {
       Birthday: birthday
     };
 
-    fetch('https://road-movie-cinephiles.herokuapp.com/signup', {
+    fetch('https://road-movie-cinephiles.herokuapp.com/users', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
