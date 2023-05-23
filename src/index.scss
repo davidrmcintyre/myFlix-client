@@ -1,10 +1,9 @@
+
+
 $color: steelblue;
 
 .my-flix {
   color: $color;
 }
 
-.movie-image {
-    height: 15%;
-    width: 15%;
-}
+@import '~bootstrap/scss/bootstrap.scss';

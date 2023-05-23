@@ -1,39 +1,59 @@
+import PropTypes from 'prop-types';
+import { Button } from 'react-bootstrap';
+
 export const MovieView = ({ movie, onBackClick }) => {
-    return (
+  return (
+    <div className='m-1'>
       <div>
-        <div>
-          <img src={movie.ImagePath} alt={movie.Title} class='movie-image' />
-        </div>
-        <div>
-          <span>Title: </span>
-          <span>{movie.Title}</span>
-        </div>
-        <div>
-          <span>Description: </span>
-          <span>{movie.Description}</span>
-        </div>
-        <div>
-          <span>Director: </span>
-          <span>{`${movie.Director.firstName} ${movie.Director.lastName}`}</span> {/* Concatenating first name and last name */}
-        </div>
-        <div>
-          <span>Year: </span>
-          <span>{movie.Year}</span>
-        </div>
-        <div>
-          <span>Genres: </span>
-          {movie.Genres && movie.Genres.length > 0 ? ( // Checking if genres array is not empty
-            movie.Genres.map((genre) => (
-              <span key={genre} className='genre'> {/* Assigning a unique key to each genre */}
-                {genre}
-              </span>
-            ))
-          ) : (
-            <span>No genres available</span> // Displayed when genres array is empty
-          )}
-        </div>
-        <button onClick={onBackClick}>Back</button> {/* Button to go back */}
+        <img src={movie.ImagePath} alt={movie.Title} className='w-50' />
       </div>
-    );
-  };
-  
+      <div>
+        <strong>Title: </strong>
+        <span>{movie.Title}</span>
+      </div>
+      <div>
+        <strong>Description: </strong>
+        <span>{movie.Description}</span>
+      </div>
+      <div>
+        <strong>Director: </strong>
+        <span>{`${movie.Director.firstName} ${movie.Director.lastName}`}</span>
+      </div>
+      <div>
+        <strong>Year: </strong>
+        <strong>{movie.Year}</strong>
+      </div>
+      <div>
+        <strong>Genre: </strong>
+        {movie.Genres && movie.Genres.length > 0 ? (
+          movie.Genres.map((genre) => (
+            <span key={genre} className='genre'>
+              {genre}
+            </span>
+          ))
+        ) : (
+          <span>No genres available</span>
+        )}
+      </div>
+      <Button variant='secondary' onClick={onBackClick} className='m-1'>
+        Back
+      </Button>
+    </div>
+  );
+};
+
+MovieView.propTypes = {
+  movie: PropTypes.shape({
+    _id: PropTypes.string.isRequired,
+    Title: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired,
+    Director: PropTypes.shape({
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired,
+    }).isRequired,
+    Description: PropTypes.string.isRequired,
+    Year: PropTypes.number.isRequired,
+    Genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+  }).isRequired,
+  onBackClick: PropTypes.func.isRequired,
+};
