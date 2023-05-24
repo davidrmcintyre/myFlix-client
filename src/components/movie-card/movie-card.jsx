@@ -1,30 +1,27 @@
-// Here you import the PropTypes library
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
+import { Card } from 'react-bootstrap';
 
-// The MovieCard function component
 export const MovieCard = ({ movie, onMovieClick }) => {
   return (
-    <div
-      onClick={() => {
-        onMovieClick(movie);
-      }}
-    >
-      {movie.Title}
-    </div>
+    <Card onClick={() => onMovieClick(movie)} style={{ margin: '20px' }}>
+      <Card.Img variant='top' src={movie.ImagePath} alt={movie.Title} />
+      <Card.Body>
+        <Card.Title>{movie.Title}</Card.Title>
+      </Card.Body>
+    </Card>
   );
 };
 
-// Here is where we define all the props constraints for the MovieCard
 MovieCard.propTypes = {
   movie: PropTypes.shape({
-    _id: PropTypes.string.isRequired, // ID of the movie (string)
-    Title: PropTypes.string.isRequired, // Title of the movie (string)
-    ImagePath: PropTypes.string.isRequired, // Path to the movie image (string)
-    Director: PropTypes.string.isRequired, // Director's name (string)
-    Description: PropTypes.string.isRequired, // Description of the movie (string)
-    Year: PropTypes.number.isRequired, // Year of release (number)
-    Genres: PropTypes.arrayOf(PropTypes.string).isRequired, // Array of genres (array of strings)
-    Featured: PropTypes.bool.isRequired, // Flag indicating if the movie is featured (boolean)
+    _id: PropTypes.string.isRequired,
+    Title: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired,
+    Director: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    Year: PropTypes.number.isRequired,
+    Genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+    Featured: PropTypes.bool.isRequired,
   }).isRequired,
-  onMovieClick: PropTypes.func.isRequired, // Event handler for when the movie is clicked (function)
+  onMovieClick: PropTypes.func.isRequired,
 };
