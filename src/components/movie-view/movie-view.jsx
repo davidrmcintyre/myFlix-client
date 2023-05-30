@@ -1,7 +1,12 @@
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 
-export const MovieView = ({ movie, onBackClick }) => {
+export const MovieView = ({ movie, onAddToFavorites }) => {
+  const handleAddToFavorites = () => {
+    onAddToFavorites(movie._id);
+  };
+
   return (
     <div className='m-1'>
       <div>
@@ -21,7 +26,7 @@ export const MovieView = ({ movie, onBackClick }) => {
       </div>
       <div>
         <strong>Year: </strong>
-        <strong>{movie.Year}</strong>
+        <span>{movie.Year}</span>
       </div>
       <div>
         <strong>Genre: </strong>
@@ -35,8 +40,8 @@ export const MovieView = ({ movie, onBackClick }) => {
           <span>No genres available</span>
         )}
       </div>
-      <Button variant='secondary' onClick={onBackClick} className='m-1'>
-        Back
+      <Button variant='primary' onClick={handleAddToFavorites} className='mt-2'>
+        Add to Favorites
       </Button>
     </div>
   );
@@ -49,11 +54,11 @@ MovieView.propTypes = {
     ImagePath: PropTypes.string.isRequired,
     Director: PropTypes.shape({
       firstName: PropTypes.string.isRequired,
-      lastName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired
     }).isRequired,
     Description: PropTypes.string.isRequired,
     Year: PropTypes.number.isRequired,
-    Genres: PropTypes.arrayOf(PropTypes.string).isRequired,
+    Genres: PropTypes.arrayOf(PropTypes.string).isRequired
   }).isRequired,
-  onBackClick: PropTypes.func.isRequired,
+  onAddToFavorites: PropTypes.func.isRequired
 };
