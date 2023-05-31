@@ -1,5 +1,6 @@
-.my-flix {
-  color: #4682b4;
+.flex-container {
+  justify-content: flex-end;
+  display: flex;
 }
 
 :root {

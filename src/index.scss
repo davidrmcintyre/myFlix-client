@@ -1,9 +1,9 @@
-
-
-$color: steelblue;
-
-.my-flix {
-  color: $color;
+.flex-container {
+  display: flex;
+  justify-content: flex-end;
 }
+
+
+
 
 @import '~bootstrap/scss/bootstrap.scss';
