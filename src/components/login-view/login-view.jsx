@@ -26,6 +26,7 @@ export const LoginView = ({ onLoggedIn }) => {
           localStorage.setItem('user', JSON.stringify(data.user));
           localStorage.setItem('token', data.token);
           onLoggedIn(data.user, data.token);
+          alert('Logged in successfully, please proceed to the homepage')
         } else {
           alert('No such user');
         }
@@ -36,7 +37,7 @@ export const LoginView = ({ onLoggedIn }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit} className='mt-2'>
+    <Form onSubmit={handleSubmit} className='mt-2 w-50 mx-auto'>
       <Form.Group controlId='username'>
         <Form.Label>Username:</Form.Label>
         <Form.Control

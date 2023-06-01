@@ -10,7 +10,7 @@ export const MovieView = ({ movie, onAddToFavorites }) => {
   return (
     <div className='m-1'>
       <div>
-        <img src={movie.ImagePath} alt={movie.Title} className='w-50' />
+        <img src={movie.ImagePath} alt={movie.Title} className='w-50 rounded'/>
       </div>
       <div>
         <strong>Title: </strong>
@@ -40,7 +40,7 @@ export const MovieView = ({ movie, onAddToFavorites }) => {
           <span>No genres available</span>
         )}
       </div>
-      <Button variant='primary' onClick={handleAddToFavorites} className='mt-2'>
+      <Button variant='secondary' onClick={handleAddToFavorites} className='mt-2'>
         Add to Favorites
       </Button>
     </div>
