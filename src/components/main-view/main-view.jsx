@@ -15,16 +15,19 @@ export const MainView = () => {
   const [movies, setMovies] = useState([]);
   const [user, setUser] = useState(storedUser);
   const [token, setToken] = useState(storedToken);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredMovies, setFilteredMovies] = useState([]);
 
   useEffect(() => {
     if (!token) return;
 
+    // Fetch movies from the API when the token changes
     fetch('https://road-movie-cinephiles.herokuapp.com/movies', {
       headers: { Authorization: `Bearer ${token}` }
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        // Process the API response and update the movies state
         const moviesFromApi = data.map((movie) => {
           return {
             _id: movie._id,
@@ -49,6 +52,7 @@ export const MainView = () => {
   }, [token]);
 
   const handleLogin = (loggedInUser, loggedInToken) => {
+    // Update the user and token states when the user logs in
     setUser(loggedInUser);
     setToken(loggedInToken);
     localStorage.setItem('user', JSON.stringify(loggedInUser));
@@ -56,10 +60,27 @@ export const MainView = () => {
   };
 
   const handleLogout = () => {
+    // Clear the user and token states when the user logs out
     setUser(null);
     setToken(null);
     localStorage.removeItem('user');
     localStorage.removeItem('token');
+  };
+
+  // Handles the search function
+  const handleSearch = (event) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+
+    if (query.trim() === '') {
+      setFilteredMovies([]);
+    } else {
+      // Filter movies based on the search query and update the filteredMovies state
+      const filtered = movies.filter((movie) =>
+        movie.Title.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredMovies(filtered);
+    }
   };
 
   const handleAddToFavorites = (movieId) => {
@@ -104,6 +125,7 @@ export const MainView = () => {
     })
       .then((response) => {
         if (response.status === 200) {
+          // Update the user state by removing the movie from the favorite movies array
           setUser((prevUser) => ({
             ...prevUser,
             FavoriteMovies: prevUser.FavoriteMovies.filter((id) => id !== movieId)
@@ -118,20 +140,38 @@ export const MainView = () => {
       });
   };
 
-
   return (
     <BrowserRouter>
       <NavigationBar user={user} onLogout={handleLogout} />
       <Routes>
         <Route
           path='/'
-          element={user ? <MoviesList movies={movies} /> : <Navigate to='/login' />}
+          element={
+            user ? (
+              <MoviesList
+                movies={movies}
+                searchQuery={searchQuery}
+                onSearch={handleSearch}
+                filteredMovies={filteredMovies}
+              />
+            ) : (
+              <Navigate to='/login' />
+            )
+          }
         />
         <Route path='/login' element={<LoginView onLoggedIn={handleLogin} />} />
         <Route path='/signup' element={<SignupView />} />
         <Route
           path='/profile'
-          element={<ProfileView user={user} token={token} movies={movies} onLoggedOut={handleLogout} onRemoveFavorite={handleRemoveFavorite} />}
+          element={
+            <ProfileView
+              user={user}
+              token={token}
+              movies={movies}
+              onLoggedOut={handleLogout}
+              onRemoveFavorite={handleRemoveFavorite}
+            />
+          }
         />
         <Route
           path='/movie/:id'
@@ -142,21 +182,35 @@ export const MainView = () => {
   );
 };
 
-const MoviesList = ({ movies }) => {
+const MoviesList = ({ movies, searchQuery, onSearch, filteredMovies }) => {
   if (movies.length === 0) {
     return <div>The list is empty!</div>;
   }
 
+  const displayMovies = searchQuery === '' ? movies : filteredMovies;
+
   return (
-    <Row>
-      {movies.map((movie) => (
-        <Col xs={12} sm={6} md={4} lg={3} key={movie._id}>
-          <Link to={`/movie/${movie._id}`} className='text-decoration-none'>
-            <MovieCard movie={movie} />
-          </Link>
-        </Col>
-      ))}
-    </Row>
+    <div className='rounded m-1'>
+      <input
+        type="text"
+        value={searchQuery}
+        onChange={onSearch}
+        placeholder="Search movies..."
+      />
+      {displayMovies.length > 0 ? (
+        <Row>
+          {displayMovies.map((movie) => (
+            <Col xs={12} sm={6} md={4} lg={3} key={movie._id}>
+              <Link to={`/movie/${movie._id}`} className="text-decoration-none">
+                <MovieCard movie={movie} />
+              </Link>
+            </Col>
+          ))}
+        </Row>
+      ) : (
+        <div>No movies found with this name.</div>
+      )}
+    </div>
   );
 };
 
