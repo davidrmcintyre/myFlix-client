@@ -11,8 +11,8 @@ export const NavigationBar = ({ user, onLogout }) => {
   };
 
   return (
-    <Navbar bg='dark' variant='dark' expand='lg'>
-      <Navbar.Brand as={Link} to='/'>
+    <Navbar bg='dark' variant='dark' expand='lg' className='rounded'>
+      <Navbar.Brand as={Link} to='/' className='p-2'>
         Road Movie Cinephiles
       </Navbar.Brand>
       <Navbar.Toggle aria-controls='navbar-nav' />

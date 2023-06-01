@@ -150,7 +150,7 @@ export const ProfileView = ({ user, token, movies, onLoggedOut, onRemoveFavorite
       </Row>
       <Row className='justify-content-center'>
         <Col>
-          <Button variant='danger' className='mt-2' onClick={handleDeregister}>
+          <Button variant='danger' className='mt-2 mb-3' onClick={handleDeregister}>
             Deregister
           </Button>
         </Col>

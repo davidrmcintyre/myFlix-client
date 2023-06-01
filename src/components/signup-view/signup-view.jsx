@@ -34,11 +34,15 @@ export const SignupView = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit} className='mt-2'>
+    <Form onSubmit={handleSubmit} className='mt-2 w-50 mx-auto'>
+      <Form.Group controlID='header'>
+        <Form.Label>Please Sign Up</Form.Label>
+      </Form.Group>
       <Form.Group controlId='username'>
         <Form.Label>Username:</Form.Label>
         <Form.Control
           type='text'
+          placeholder='Username must contain at least six charatcers'
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
@@ -49,6 +53,7 @@ export const SignupView = () => {
         <Form.Label>Password:</Form.Label>
         <Form.Control
           type='password'
+          placeholder='A password is required'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required

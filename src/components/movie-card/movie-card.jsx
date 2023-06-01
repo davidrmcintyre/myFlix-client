@@ -6,7 +6,7 @@ export const MovieCard = ({ movie }) => {
   return (
     <Card style={{ margin: '20px' }}>
       <Link to={`/movie/${movie._id}`}>
-        <Card.Img variant='top' src={movie.ImagePath} alt={movie.Title} />
+        <Card.Img variant='top' src={movie.ImagePath} alt={movie.Title}/>
       </Link>
       <Card.Body>
         <Card.Title style={{ color: '#333' }}>{movie.Title}</Card.Title>
