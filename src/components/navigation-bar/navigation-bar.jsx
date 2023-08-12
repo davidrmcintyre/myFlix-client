@@ -11,7 +11,7 @@ export const NavigationBar = ({ user, onLogout }) => {
   };
 
   return (
-    <Navbar bg='dark' variant='dark' expand='lg' className='rounded'>
+    <Navbar bg='dark' variant='dark' expand='lg' className='rounded' fluid>
       <Navbar.Brand as={Link} to='/' className='p-2'>
         Road Movie Cinephiles
       </Navbar.Brand>
