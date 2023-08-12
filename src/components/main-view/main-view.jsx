@@ -68,6 +68,22 @@ export const MainView = () => {
     localStorage.removeItem('token');
   };
 
+  // Handles the search function
+  const handleSearch = (event) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+
+    if (query.trim() === '') {
+      setFilteredMovies([]);
+    } else {
+      // Filter movies based on the search query and update the filteredMovies state
+      const filtered = movies.filter((movie) =>
+        movie.Title.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredMovies(filtered);
+    }
+  };
+
   const handleAddToFavorites = (movieId) => {
     // Create an updated user object with the new movie added to the favorite movies array
     const updatedUser = {
@@ -128,7 +144,7 @@ export const MainView = () => {
   return (
     <BrowserRouter>
       <div className="container-flud">
-      <NavigationBar user={user} onLogout={handleLogout} />
+        <NavigationBar user={user} onLogout={handleLogout} />
       <Routes>
         <Route
           path='/'
