@@ -143,7 +143,7 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
-      <Container fluid>
+      <div className="container-flud">
       <NavigationBar user={user} onLogout={handleLogout} />
       <Routes>
         <Route
@@ -180,7 +180,7 @@ export const MainView = () => {
           element={<MovieDetails movies={movies} onAddToFavorites={handleAddToFavorites} />}
         />
       </Routes>
-      </Container>
+      </div>
     </BrowserRouter>
   );
 };
