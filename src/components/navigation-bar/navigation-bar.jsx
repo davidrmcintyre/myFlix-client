@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
+import Container from 'react-bootstrap/Container';
 
 export const NavigationBar = ({ user, onLogout }) => {
   const navigate = useNavigate();
@@ -11,8 +12,9 @@ export const NavigationBar = ({ user, onLogout }) => {
   };
 
   return (
-    <Navbar bg='dark' variant='dark' expand='lg' fluid>
-      <Navbar.Brand as={Link} to='/'>
+    <Container fluid>
+      <Navbar bg='dark' variant='dark' expand='lg' fluid>
+      <Navbar.Brand as={Link} to='/' className='p-2'>
         Road Movie Cinephiles
       </Navbar.Brand>
       <Navbar.Toggle aria-controls='navbar-nav' />
@@ -41,5 +43,6 @@ export const NavigationBar = ({ user, onLogout }) => {
         </Nav>
       </Navbar.Collapse>
     </Navbar>
+    </Container>
   );
 };
