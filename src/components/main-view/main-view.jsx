@@ -3,6 +3,7 @@ import { MovieCard } from '../movie-card/movie-card';
 import { MovieView } from '../movie-view/movie-view';
 import { LoginView } from '../login-view/login-view';
 import { SignupView } from '../signup-view/signup-view';
+import Container from 'react-bootstrap';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { BrowserRouter, Routes, Route, Link, Navigate, useParams } from 'react-router-dom';
@@ -143,6 +144,7 @@ export const MainView = () => {
   return (
     <BrowserRouter>
       <NavigationBar user={user} onLogout={handleLogout} />
+      <Container fluid>
       <Routes>
         <Route
           path='/'
@@ -178,6 +180,7 @@ export const MainView = () => {
           element={<MovieDetails movies={movies} onAddToFavorites={handleAddToFavorites} />}
         />
       </Routes>
+      </Container>
     </BrowserRouter>
   );
 };
