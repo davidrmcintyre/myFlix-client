@@ -143,8 +143,8 @@ export const MainView = () => {
 
   return (
     <BrowserRouter>
-      <NavigationBar user={user} onLogout={handleLogout} />
       <Container fluid>
+      <NavigationBar user={user} onLogout={handleLogout} />
       <Routes>
         <Route
           path='/'
