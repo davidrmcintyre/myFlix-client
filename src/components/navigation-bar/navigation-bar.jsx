@@ -12,7 +12,7 @@ export const NavigationBar = ({ user, onLogout }) => {
 
   return (
     <Navbar bg='dark' variant='dark' expand='lg' fluid>
-      <Navbar.Brand as={Link} to='/' className='p-2'>
+      <Navbar.Brand as={Link} to='/'>
         Road Movie Cinephiles
       </Navbar.Brand>
       <Navbar.Toggle aria-controls='navbar-nav' />
