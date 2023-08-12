@@ -1,14 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 
-export const NavigationBar = ({ user, onLogout }) => {
+export const NavigationBar = ({ user, onLogout, movies }) => {
   const navigate = useNavigate();
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredMovies, setFilteredMovies] = useState([]);
 
   const handleLogout = () => {
     onLogout();
     navigate('/login');
+
+    // Handles the search function
+  const handleSearch = (event) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+
+    if (query.trim() === '') {
+      setFilteredMovies([]);
+    } else {
+      // Filter movies based on the search query and update the filteredMovies state
+      const filtered = movies.filter((movie) =>
+        movie.Title.toLowerCase().includes(query.toLowerCase())
+      );
+      setFilteredMovies(filtered);
+    }
   };
 
   return (
@@ -38,6 +55,12 @@ export const NavigationBar = ({ user, onLogout }) => {
               <Nav.Link as={Link} to='/signup'>
                 Sign Up
               </Nav.Link>
+              <input
+              type='text'
+              placeholder='Search movies...'
+              value={searchQuery}
+              onChange={handleSearch}
+            />
             </>
           )}
         </Nav>
