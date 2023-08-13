@@ -11,12 +11,12 @@ export const MovieView = ({ movie, onAddToFavorites }) => {
   };
 
   return (
-    <Container className='m-1' fluid>
+    <Container className='m-1 justify-content-center align-items-center'>
       <Row>
-        <Col xs={12} sm={8} md={6} lg={4}>
+        <Col>
         <img src={movie.ImagePath} alt={movie.Title} className='w-100 rounded'/>
         </Col>
-        <Col xs={12} sm={8} md={6} lg={4}>
+        <Col>
         <div>
         <strong>Title: </strong>
         <span>{movie.Title}</span>
