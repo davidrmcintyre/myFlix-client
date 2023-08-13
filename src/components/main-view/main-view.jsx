@@ -231,17 +231,17 @@ const MovieDetails = ({ movies, onAddToFavorites }) => {
 
   return (
     <>
-      <Row className='m-3 justify-content-end'>
+      <Row>
+        <Col lg={9} md={7} sm={5} className='mx-auto'>
+          <MovieView movie={movie} onAddToFavorites={onAddToFavorites} />
+        </Col>
+        <Row className='m-3 justify-content-end'>
         <Col>
           <Link to='/' className='btn btn-secondary'>
             Back
           </Link>
         </Col>
       </Row>
-      <Row>
-        <Col lg={9} md={7} sm={5} className='mx-auto'>
-          <MovieView movie={movie} onAddToFavorites={onAddToFavorites} />
-        </Col>
       </Row>
       <hr />
       <Row>
