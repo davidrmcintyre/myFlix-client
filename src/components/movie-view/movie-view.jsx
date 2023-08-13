@@ -11,10 +11,10 @@ export const MovieView = ({ movie, onAddToFavorites }) => {
   };
 
   return (
-    <Container className='m-1'>
+    <Container className='m-1' fluid>
       <Row>
         <Col xs={12} sm={8} md={6} lg={4}>
-        <img src={movie.ImagePath} alt={movie.Title} className='w-50 rounded'/>
+        <img src={movie.ImagePath} alt={movie.Title} className='w-100 rounded'/>
         </Col>
         <Col xs={12} sm={8} md={6} lg={4}>
         <div>
