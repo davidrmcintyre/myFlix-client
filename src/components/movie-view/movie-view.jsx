@@ -13,10 +13,10 @@ export const MovieView = ({ movie, onAddToFavorites }) => {
   return (
     <Container className='m-1 justify-content-center align-items-center'>
       <Row>
-        <Col>
-        <img src={movie.ImagePath} alt={movie.Title} className='w-80 rounded'/>
+        <Col md={6}>
+        <img src={movie.ImagePath} alt={movie.Title} className='w-100 rounded'/>
         </Col>
-        <Col>
+        <Col md={6}>
         <div>
         <strong>Title: </strong>
         <span>{movie.Title}</span>
