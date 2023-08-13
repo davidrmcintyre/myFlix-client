@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 
 export const MovieView = ({ movie, onAddToFavorites }) => {
   const handleAddToFavorites = () => {
@@ -8,11 +11,13 @@ export const MovieView = ({ movie, onAddToFavorites }) => {
   };
 
   return (
-    <div className='m-1'>
-      <div>
+    <Container className='m-1'>
+      <Row>
+        <Col xs={12} sm={6} md={4} lg={3}>
         <img src={movie.ImagePath} alt={movie.Title} className='w-50 rounded'/>
-      </div>
-      <div>
+        </Col>
+        <Col xs={12} sm={6} md={4} lg={3}>
+        <div>
         <strong>Title: </strong>
         <span>{movie.Title}</span>
       </div>
@@ -40,10 +45,13 @@ export const MovieView = ({ movie, onAddToFavorites }) => {
           <span>No genres available</span>
         )}
       </div>
+        </Col>
+      </Row>
+      
       <Button variant='secondary' onClick={handleAddToFavorites} className='mt-2'>
         Add to Favorites
       </Button>
-    </div>
+    </Container>
   );
 };
 
