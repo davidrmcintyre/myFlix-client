@@ -42,7 +42,7 @@ export const SignupView = () => {
         <Form.Label>Username:</Form.Label>
         <Form.Control
           type='text'
-          placeholder='Username must contain at least six charatcers'
+          placeholder='Min. 6, letters and numbers only'
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
